@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ＳｌｅｅｋＣｒａｆｔ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{font-family:'Orbitron',sans-serif;color:#00ffff;background:#000;overflow-x:hidden;scroll-behavior:smooth;}
+    #particles-js{position:fixed;width:100%;height:100%;z-index:-1;}
+    nav{position:fixed;top:0;width:100%;padding:1rem;display:flex;justify-content:center;gap:2rem;background:rgba(0,0,0,0.5);backdrop-filter:blur(5px);z-index:10;}
+    nav a{text-decoration:none;color:#00ffff;transition:0.3s;}nav a:hover{color:#fff;}
+    .section{min-height:100vh;padding:6rem 2rem;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;}
+    .card{background:rgba(0,0,0,0.35);border:1px solid rgba(0,255,255,0.25);border-radius:20px;backdrop-filter:blur(10px);padding:3rem;max-width:500px;}
+    h1{font-size:3.5rem;text-shadow:0 0 20px #00ffff,0 0 40px #00ffff;margin-bottom:1rem;}
+    p{font-size:1.1rem;color:#ccc;line-height:1.6;margin-bottom:2rem;}
+    .btn{display:inline-block;padding:1rem 2rem;margin:0.5rem;background:#00ffff;color:#000;font-weight:bold;border-radius:50px;text-decoration:none;box-shadow:0 0 20px inset #00ffff,0 0 10px #00ffff;transition:0.3s;}
+    .btn:hover{background:#00cccc;box-shadow:0 0 30px inset #00cccc,0 0 20px #00cccc;}
+    .cards-container{display:flex;flex-wrap:wrap;gap:1.5rem;justify-content:center;}
+    .small-card{background:rgba(0,0,0,0.25);border:1px solid rgba(0,255,255,0.2);border-radius:15px;backdrop-filter:blur(6px);padding:2rem;width:260px;text-align:left;}
+    .footer{padding:2rem;text-align:center;color:#444;}
+    input[type="text"], input[type="password"] {padding:1rem;margin:0.5rem;width:80%;border-radius:8px;border:none;}
+    input[type="file"] {color:#ccc;margin:1rem auto;}
+    @media(max-width:600px){h1{font-size:2.5rem;}p{font-size:1rem;}.small-card{width:80%;}}
+  </style>
+</head>
+<body>
+  <div id="particles-js"></div>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#clients">Clients</a>
+    <a href="#textures">Texture Packs</a>
+    <a href="#faq">FAQ</a>
+    <a href="#login">Login</a>
+    <a href="#admin">Admin</a>
+    <a href="#files">Files</a>
+  </nav>
+
+  <section id="home" class="section" data-aos="fade-up">
+    <div class="card">
+      <h1>ＳｌｅｅｋＣｒａｆｔ</h1>
+      <p>Ultimate Minecraft Hub<br>FPS Boost · Texture Packs · Client Mods</p>
+      <a href="https://discord.gg/QpYUrjzV3a" class="btn" target="_blank">Join Discord</a>
+      <a href="https://youtube.com/your-channel" class="btn" target="_blank">Watch YouTube</a>
+    </div>
+  </section>
+
+  <section id="clients" class="section" data-aos="fade-up">
+    <h1>Clients</h1>
+    <div class="cards-container">
+      <div class="small-card"><h2>X Client</h2><p>Explore Sleek X client tools.</p></div>
+      <div class="small-card"><h2>Fractal Client</h2><p>High performance modded client.</p></div>
+      <div class="small-card"><h2>Solstice Client</h2><p>Lightweight and smooth.</p></div>
+    </div>
+  </section>
+
+  <section id="textures" class="section" data-aos="fade-up">
+    <h1>Texture Packs</h1>
+    <div class="cards-container">
+      <div class="small-card"><h2>Minimal Pack</h2><p>Clean and simple textures.</p></div>
+      <div class="small-card"><h2>Vibrant Pack</h2><p>Bright colorful style.</p></div>
+      <div class="small-card"><h2>Faithful Pack</h2><p>Classic Minecraft look.</p></div>
+    </div>
+  </section>
+
+  <section id="faq" class="section" data-aos="fade-up">
+    <h1>FAQ</h1>
+    <div class="cards-container">
+      <div class="small-card"><h2>How to install mods?</h2><p>Download client → place in mods folder → launch.</p></div>
+      <div class="small-card"><h2>How to boost FPS?</h2><p>Use our optimized launcher and settings.</p></div>
+      <div class="small-card"><h2>Need help?</h2><p>Join Discord for support.</p></div>
+    </div>
+  </section>
+
+  <section id="login" class="section" data-aos="zoom-in">
+    <div class="card">
+      <h1>Login</h1>
+      <form onsubmit="return loginUser(event)">
+        <input id="login-username" type="text" placeholder="Username" required>
+        <input id="login-password" type="password" placeholder="Password" required><br>
+        <button class="btn" type="submit">Login</button>
+      </form>
+    </div>
+  </section>
+
+  <section id="admin" class="section" data-aos="zoom-in">
+    <div class="card">
+      <h1>Admin Panel</h1>
+      <form onsubmit="return loginAdmin(event)">
+        <input id="admin-username" type="text" placeholder="Admin Username" required>
+        <input id="admin-password" type="password" placeholder="Admin Password" required><br>
+        <button class="btn" type="submit">Login as Admin</button>
+      </form>
+      <div id="admin-panel" style="display:none;margin-top:2rem;">
+        <h2>Upload New File</h2>
+        <input type="file" id="fileUpload">
+        <button class="btn" onclick="uploadFile()">Upload</button>
+        <p style="color:#0f0;margin-top:1rem;" id="uploadMsg"></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="files" class="section" data-aos="fade-up">
+    <h1>Files</h1>
+    <div class="cards-container" id="file-list">
+      <div class="small-card"><h2>Mod v1.0</h2><p><a href="#" class="btn">Download</a></p></div>
+      <div class="small-card"><h2>Texture v2.1</h2><p><a href="#" class="btn">Download</a></p></div>
+    </div>
+  </section>
+
+  <div class="footer">&copy; 2025 SleekCraft</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+    const ADMIN_USERNAME = "admin";
+    const ADMIN_PASSWORD = "sleek123";
+
+    function loginAdmin(event) {
+      event.preventDefault();
+      const user = document.getElementById("admin-username").value;
+      const pass = document.getElementById("admin-password").value;
+      if (user === ADMIN_USERNAME && pass === ADMIN_PASSWORD) {
+        document.getElementById("admin-panel").style.display = "block";
+        alert("Welcome Admin");
+      } else {
+        alert("Invalid admin credentials");
+      }
+    }
+
+    function uploadFile() {
+      const fileInput = document.getElementById("fileUpload");
+      const msg = document.getElementById("uploadMsg");
+      if (fileInput.files.length > 0) {
+        msg.textContent = "✅ File uploaded (simulated)";
+      } else {
+        msg.textContent = "⚠️ Please select a file to upload.";
+      }
+    }
+
+    function loginUser(event) {
+      event.preventDefault();
+      alert("Login feature coming soon.");
+    }
+
+    particlesJS('particles-js', {
+      particles: {number:{value:80,density:{enable:true,value_area:800}},color:{value:'#00ffff'},
+        shape:{type:'circle'},opacity:{value:0.5},size:{value:3,random:true},
+        line_linked:{enable:true,distance:150,color:'#00ffff',opacity:0.4,width:1},
+        move:{enable:true,speed:2,direction:'none',out_mode:'bounce'}},
+      interactivity:{detect_on:'canvas',events:{onhover:{enable:true,mode:'grab'},onclick:{enable:true,mode:'push'}},
+        modes:{grab:{distance:140,line_linked:{opacity:1}},push:{particles_nb:4}}},
+      retina_detect:true
+    });
+    AOS.init();
+  </script>
+</body>
+</html>
