@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="icon" href="https://i.imgur.com/Ek71fcY.png" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdSense & Monetization - Premium Viral Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+            color: white;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        .monetization-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.8);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            margin-top: 20px;
+        }
+        
+        .monetization-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .monetization-header img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 3px solid #ffd700;
+            margin-bottom: 15px;
+        }
+        
+        .monetization-header h1 {
+            color: #ffd700;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .monetization-header p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+        }
+        
+        .money-badge {
+            background: linear-gradient(45deg, #28a745, #20c997);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+        
+        .monetization-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .monetization-tab {
+            padding: 12px 25px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+        
+        .monetization-tab.active {
+            background: #28a745;
+            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4);
+        }
+        
+        .monetization-tab:hover {
+            transform: translateY(-3px);
+        }
+        
+        .monetization-content {
+            display: none;
+        }
+        
+        .monetization-content.active {
+            display: block;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #ffd700;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #ffd700;
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+            margin: 0;
+        }
+        
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, #ff6b6b, #ff8e53);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+        }
+        
+        .btn-success {
+            background: linear-gradient(45deg, #28a745, #20c997);
+            color: white;
+        }
+        
+        .btn-success:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4);
+        }
+        
+        .btn-warning {
+            background: linear-gradient(45deg, #ffc107, #fd7e14);
+            color: white;
+        }
+        
+        .btn-warning:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 193, 7, 0.4);
+        }
+        
+        .btn-info {
+            background: linear-gradient(45deg, #17a2b8, #6f42c1);
+            color: white;
+        }
+        
+        .btn-info:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(23, 162, 184, 0.4);
+        }
+        
+        .back-btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .back-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .stat-card i {
+            font-size: 24px;
+            color: #ffd700;
+            margin-bottom: 10px;
+        }
+        
+        .stat-card h3 {
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: #28a745;
+        }
+        
+        .stat-card p {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .alert {
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        
+        .alert-success {
+            background: rgba(40, 167, 69, 0.2);
+            border: 1px solid #28a745;
+            color: #28a745;
+        }
+        
+        .alert-error {
+            background: rgba(220, 53, 69, 0.2);
+            border: 1px solid #dc3545;
+            color: #dc3545;
+        }
+        
+        .alert-info {
+            background: rgba(23, 162, 184, 0.2);
+            border: 1px solid #17a2b8;
+            color: #17a2b8;
+        }
+        
+        .code-block {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+            padding: 15px;
+            font-family: monospace;
+            font-size: 12px;
+            white-space: pre-wrap;
+            margin-top: 15px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="monetization-container">
+        <div class="monetization-header">
+            <img src="https://i.imgur.com/Ek71fcY.png" alt="Admin Logo">
+            <h1>Monetization & AdSense</h1>
+            <p>Manage your website monetization and Google AdSense settings</p>
+            <div class="money-badge">$ REVENUE SYSTEM</div>
+        </div>
+
+        <div class="monetization-tabs">
+            <div class="monetization-tab active" data-tab="overview">💰 Overview</div>
+            <div class="monetization-tab" data-tab="adsense">📊 Google AdSense</div>
+            <div class="monetization-tab" data-tab="ads">🎯 Ad Placement</div>
+            <div class="monetization-tab" data-tab="analytics">📈 Analytics</div>
+            <div class="monetization-tab" data-tab="settings">⚙️ Settings</div>
+        </div>
+
+        <!-- Overview Content -->
+        <div class="monetization-content active" id="overview">
+            <h2><i class="fas fa-chart-line"></i> Revenue Overview</h2>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <i class="fas fa-dollar-sign"></i>
+                    <h3 id="totalRevenue">$0.00</h3>
+                    <p>Total Revenue</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-eye"></i>
+                    <h3 id="pageViews">0</h3>
+                    <p>Page Views</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-mouse-pointer"></i>
+                    <h3 id="totalClicks">0</h3>
+                    <p>Clicks</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-chart-bar"></i>
+                    <h3 id="ctr">0.00%</h3>
+                    <p>CTR</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center;">
+                <button class="btn btn-success" onclick="refreshStats()">
+                    <i class="fas fa-sync-alt"></i> Refresh Statistics
+                </button>
+                <button class="btn btn-info" onclick="exportRevenueData()">
+                    <i class="fas fa-download"></i> Export Data
+                </button>
+            </div>
+            
+            <div id="overviewAlert"></div>
+        </div>
+
+        <!-- Google AdSense Content -->
+        <div class="monetization-content" id="adsense">
+            <h2><i class="fas fa-google"></i> Google AdSense Configuration</h2>
+            
+            <form id="adsenseForm">
+                <div class="form-group">
+                    <label for="adsensePublisherId">Publisher ID</label>
+                    <input type="text" id="adsensePublisherId" name="publisherId" placeholder="ca-pub-XXXXXXXXXXXXXXXX">
+                </div>
+                
+                <div class="form-group">
+                    <label for="adsenseAdUnit">Ad Unit ID</label>
+                    <input type="text" id="adsenseAdUnit" name="adUnitId" placeholder="1234567890">
+                </div>
+                
+                <div class="form-group">
+                    <label for="adsenseAdFormat">Ad Format</label>
+                    <select id="adsenseAdFormat" name="adFormat">
+                        <option value="banner">Banner</option>
+                        <option value="rectangle">Rectangle</option>
+                        <option value="skyscraper">Skyscraper</option>
+                        <option value="leaderboard">Leaderboard</option>
+                    </select>
+                </div>
+                
+                <div class="checkbox-group">
+                    <input type="checkbox" id="adsenseEnabled" name="enabled" checked>
+                    <label for="adsenseEnabled">Enable AdSense</label>
+                </div>
+                
+                <button type="button" class="btn btn-primary" onclick="generateAdCode()">
+                    <i class="fas fa-code"></i> Generate Ad Code
+                </button>
+                <button type="submit" class="btn btn-success">
+                    <i class="fas fa-save"></i> Save Settings
+                </button>
+            </form>
+            
+            <div id="adCodePreview" style="display: none;">
+                <h3>Generated Ad Code:</h3>
+                <div id="adCodeBlock" class="code-block"></div>
+                <button class="btn btn-info" onclick="copyAdCode()">
+                    <i class="fas fa-copy"></i> Copy Code
+                </button>
+            </div>
+            
+            <div id="adsenseAlert"></div>
+        </div>
+
+        <!-- Ad Placement Content -->
+        <div class="monetization-content" id="ads">
+            <h2><i class="fas fa-crosshairs"></i> Ad Placement Settings</h2>
+            
+            <div class="form-group">
+                <label>Ad Locations</label>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="headerAd" checked>
+                    <label for="headerAd">Header Ad</label>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="sidebarAd" checked>
+                    <label for="sidebarAd">Sidebar Ad</label>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="contentAd" checked>
+                    <label for="contentAd">Content Ad</label>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="footerAd">
+                    <label for="footerAd">Footer Ad</label>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="popupAd">
+                    <label for="popupAd">Popup Ad</label>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="adFrequency">Ad Frequency</label>
+                <select id="adFrequency">
+                    <option value="low">Low</option>
+                    <option value="medium" selected>Medium</option>
+                    <option value="high">High</option>
+                </select>
+            </div>
+            
+            <button class="btn btn-primary" onclick="saveAdPlacement()">
+                <i class="fas fa-save"></i> Save Placement
+            </button>
+            <button class="btn btn-info" onclick="previewAdPlacement()">
+                <i class="fas fa-eye"></i> Preview
+            </button>
+            
+            <div id="adPreview" style="display: none; margin-top: 20px;">
+                <h3>Ad Placement Preview</h3>
+                <p>Preview feature coming soon!</p>
+            </div>
+            
+            <div id="adsAlert"></div>
+        </div>
+
+        <!-- Analytics Content -->
+        <div class="monetization-content" id="analytics">
+            <h2><i class="fas fa-chart-area"></i> Analytics & Reports</h2>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <i class="fas fa-calendar-day"></i>
+                    <h3 id="todayRevenue">$0.00</h3>
+                    <p>Today's Revenue</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-calendar-week"></i>
+                    <h3 id="weekRevenue">$0.00</h3>
+                    <p>This Week</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3 id="monthRevenue">$0.00</h3>
+                    <p>This Month</p>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-percentage"></i>
+                    <h3 id="growthRate">0.00%</h3>
+                    <p>Growth Rate</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center;">
+                <button class="btn btn-primary" onclick="generateReport()">
+                    <i class="fas fa-file-alt"></i> Generate Report
+                </button>
+                <button class="btn btn-info" onclick="syncAnalytics()">
+                    <i class="fas fa-sync"></i> Sync Analytics
+                </button>
+            </div>
+            
+            <div id="analyticsAlert"></div>
+        </div>
+
+        <!-- Settings Content -->
+        <div class="monetization-content" id="settings">
+            <h2><i class="fas fa-cog"></i> Monetization Settings</h2>
+            
+            <div class="form-group">
+                <label for="currency">Currency</label>
+                <select id="currency">
+                    <option value="USD" selected>USD ($)</option>
+                    <option value="EUR">EUR (€)</option>
+                    <option value="GBP">GBP (£)</option>
+                    <option value="JPY">JPY (¥)</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="paymentMethod">Payment Method</label>
+                <select id="paymentMethod">
+                    <option value="adsense" selected>Google AdSense</option>
+                    <option value="stripe">Stripe</option>
+                    <option value="paypal">PayPal</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>Optimization Settings</label>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="autoOptimize" checked>
+                    <label for="autoOptimize">Auto-optimize ad placement</label>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="mobileOptimize" checked>
+                    <label for="mobileOptimize">Mobile optimization</label>
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="adBlockDetection">
+                    <label for="adBlockDetection">Ad blocker detection</label>
+                </div>
+            </div>
+            
+            <button class="btn btn-success" onclick="saveSettings()">
+                <i class="fas fa-save"></i> Save Settings
+            </button>
+            <button class="btn btn-warning" onclick="resetSettings()">
+                <i class="fas fa-undo"></i> Reset to Default
+            </button>
+            
+            <div id="settingsAlert"></div>
+        </div>
+
+        <div style="margin-top: 30px; text-align: center;">
+            <a href="admin-panel.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i> Back to Admin Panel
+            </a>
+            <button class="btn btn-primary" onclick="testTabSwitch('adsense')" style="margin-left: 15px;">
+                <i class="fas fa-test"></i> Test AdSense Tab
+            </button>
+            <button class="btn btn-warning" onclick="debugTabs()" style="margin-left: 15px;">
+                <i class="fas fa-bug"></i> Debug Tabs
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Monetization data
+        let monetizationData = {
+            adsense: {
+                publisherId: '',
+                adUnitId: '',
+                adFormat: 'banner',
+                enabled: true
+            },
+            placement: {
+                headerAd: true,
+                sidebarAd: true,
+                contentAd: true,
+                footerAd: false,
+                popupAd: false,
+                frequency: 'medium'
+            },
+            settings: {
+                currency: 'USD',
+                paymentMethod: 'adsense',
+                autoOptimize: true,
+                mobileOptimize: true,
+                adBlockDetection: false
+            },
+            analytics: {
+                totalRevenue: 0,
+                pageViews: 0,
+                totalClicks: 0,
+                ctr: 0,
+                todayRevenue: 0,
+                weekRevenue: 0,
+                monthRevenue: 0,
+                growthRate: 0
+            }
+        };
+
+        // Tab switching functionality
+        function setupTabSwitching() {
+            console.log('Setting up tab switching...');
+            
+            const tabs = document.querySelectorAll('.monetization-tab');
+            const contents = document.querySelectorAll('.monetization-content');
+            
+            console.log('Found tabs:', tabs.length);
+            console.log('Found content sections:', contents.length);
+            
+            tabs.forEach(tab => {
+                console.log('Tab data-tab:', tab.getAttribute('data-tab'));
+                tab.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    console.log('Tab clicked:', tabId);
+                    
+                    // Remove active class from all tabs and content
+                    tabs.forEach(t => t.classList.remove('active'));
+                    contents.forEach(c => c.classList.remove('active'));
+                    
+                    // Add active class to clicked tab
+                    this.classList.add('active');
+                    
+                    // Show corresponding content
+                    const contentElement = document.getElementById(tabId);
+                    if (contentElement) {
+                        contentElement.classList.add('active');
+                        console.log('Content shown for tab:', tabId);
+                    } else {
+                        console.error('Content element not found for tab:', tabId);
+                        console.log('Available content IDs:', Array.from(contents).map(c => c.id));
+                    }
+                });
+            });
+        }
+
+        // Test function to manually switch tabs
+        function testTabSwitch(tabName) {
+            console.log('Testing tab switch to:', tabName);
+            
+            const tabs = document.querySelectorAll('.monetization-tab');
+            const contents = document.querySelectorAll('.monetization-content');
+            
+            // Remove active class from all tabs and content
+            tabs.forEach(t => t.classList.remove('active'));
+            contents.forEach(c => c.classList.remove('active'));
+            
+            // Add active class to target tab
+            const targetTab = document.querySelector('[data-tab="' + tabName + '"]');
+            if (targetTab) {
+                targetTab.classList.add('active');
+                console.log('Tab activated:', tabName);
+            }
+            
+            // Show corresponding content
+            const contentElement = document.getElementById(tabName);
+            if (contentElement) {
+                contentElement.classList.add('active');
+                console.log('Content shown for tab:', tabName);
+            } else {
+                console.error('Content element not found for tab:', tabName);
+            }
+        }
+
+        // Debug function to show current tab and content
+        function debugTabs() {
+            const activeTab = document.querySelector('.monetization-tab.active');
+            const activeContent = document.querySelector('.monetization-content.active');
+            
+            console.log('Active Tab:', activeTab ? activeTab.getAttribute('data-tab') : 'None');
+            console.log('Active Content:', activeContent ? activeContent.id : 'None');
+        }
+
+        // Load saved data
+        function loadMonetizationData() {
+            const savedData = localStorage.getItem('monetizationData');
+            if (savedData) {
+                try {
+                    const data = JSON.parse(savedData);
+                    monetizationData = { ...monetizationData, ...data };
+                } catch (error) {
+                    console.error('Error loading monetization data:', error);
+                }
+            }
+            
+            // Populate form fields
+            populateFormFields();
+            updateStats();
+        }
+
+        // Populate form fields with saved data
+        function populateFormFields() {
+            // AdSense form
+            document.getElementById('adsensePublisherId').value = monetizationData.adsense.publisherId;
+            document.getElementById('adsenseAdUnit').value = monetizationData.adsense.adUnitId;
+            document.getElementById('adsenseAdFormat').value = monetizationData.adsense.adFormat;
+            document.getElementById('adsenseEnabled').checked = monetizationData.adsense.enabled;
+            
+            // Placement form
+            document.getElementById('headerAd').checked = monetizationData.placement.headerAd;
+            document.getElementById('sidebarAd').checked = monetizationData.placement.sidebarAd;
+            document.getElementById('contentAd').checked = monetizationData.placement.contentAd;
+            document.getElementById('footerAd').checked = monetizationData.placement.footerAd;
+            document.getElementById('popupAd').checked = monetizationData.placement.popupAd;
+            document.getElementById('adFrequency').value = monetizationData.placement.frequency;
+            
+            // Settings form
+            document.getElementById('currency').value = monetizationData.settings.currency;
+            document.getElementById('paymentMethod').value = monetizationData.settings.paymentMethod;
+            document.getElementById('autoOptimize').checked = monetizationData.settings.autoOptimize;
+            document.getElementById('mobileOptimize').checked = monetizationData.settings.mobileOptimize;
+            document.getElementById('adBlockDetection').checked = monetizationData.settings.adBlockDetection;
+        }
+
+        // Save data to localStorage
+        function saveMonetizationData() {
+            localStorage.setItem('monetizationData', JSON.stringify(monetizationData));
+        }
+
+        // Update statistics display
+        function updateStats() {
+            document.getElementById('totalRevenue').textContent = '$' + monetizationData.analytics.totalRevenue.toFixed(2);
+            document.getElementById('pageViews').textContent = monetizationData.analytics.pageViews.toLocaleString();
+            document.getElementById('totalClicks').textContent = monetizationData.analytics.totalClicks.toLocaleString();
+            document.getElementById('ctr').textContent = monetizationData.analytics.ctr.toFixed(2) + '%';
+            document.getElementById('todayRevenue').textContent = '$' + monetizationData.analytics.todayRevenue.toFixed(2);
+            document.getElementById('weekRevenue').textContent = '$' + monetizationData.analytics.weekRevenue.toFixed(2);
+            document.getElementById('monthRevenue').textContent = '$' + monetizationData.analytics.monthRevenue.toFixed(2);
+            document.getElementById('growthRate').textContent = monetizationData.analytics.growthRate.toFixed(2) + '%';
+        }
+
+        // AdSense form submission
+        function setupAdSenseForm() {
+            const adsenseForm = document.getElementById('adsenseForm');
+            if (adsenseForm) {
+                adsenseForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const formData = new FormData(this);
+                    monetizationData.adsense = {
+                        publisherId: formData.get('publisherId'),
+                        adUnitId: formData.get('adUnitId'),
+                        adFormat: formData.get('adFormat'),
+                        enabled: formData.get('enabled') === 'on'
+                    };
+                    
+                    saveMonetizationData();
+                    showAlert('AdSense settings saved successfully!', 'success', 'adsenseAlert');
+                });
+            }
+        }
+
+        // Generate AdSense code
+        function generateAdCode() {
+            const publisherId = document.getElementById('adsensePublisherId').value;
+            const adUnitId = document.getElementById('adsenseAdUnit').value;
+            const adFormat = document.getElementById('adsenseAdFormat').value;
+            
+            if (!publisherId || !adUnitId) {
+                showAlert('Please enter Publisher ID and Ad Unit ID first.', 'error', 'adsenseAlert');
+                return;
+            }
+            
+            const adCode = '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=' + publisherId + '" crossorigin="anonymous"></script>\n<!-- ' + adFormat.toUpperCase() + ' Ad -->\n<ins class="adsbygoogle"\n     style="display:block"\n     data-ad-client="' + publisherId + '"\n     data-ad-slot="' + adUnitId + '"\n     data-ad-format="' + adFormat + '"\n     data-full-width-responsive="true"></ins>\n<script>\n     (adsbygoogle = window.adsbygoogle || []).push({});\n</script>';
+            
+            document.getElementById('adCodeBlock').textContent = adCode;
+            document.getElementById('adCodePreview').style.display = 'block';
+            showAlert('Ad code generated successfully!', 'success', 'adsenseAlert');
+        }
+
+        // Copy ad code to clipboard
+        function copyAdCode() {
+            const adCode = document.getElementById('adCodeBlock').textContent;
+            navigator.clipboard.writeText(adCode).then(() => {
+                showAlert('Ad code copied to clipboard!', 'success', 'adsenseAlert');
+            }).catch(() => {
+                showAlert('Failed to copy ad code.', 'error', 'adsenseAlert');
+            });
+        }
+
+        // Save ad placement settings
+        function saveAdPlacement() {
+            monetizationData.placement = {
+                headerAd: document.getElementById('headerAd').checked,
+                sidebarAd: document.getElementById('sidebarAd').checked,
+                contentAd: document.getElementById('contentAd').checked,
+                footerAd: document.getElementById('footerAd').checked,
+                popupAd: document.getElementById('popupAd').checked,
+                frequency: document.getElementById('adFrequency').value
+            };
+            
+            saveMonetizationData();
+            showAlert('Ad placement settings saved successfully!', 'success', 'adsAlert');
+        }
+
+        // Preview ad placement
+        function previewAdPlacement() {
+            document.getElementById('adPreview').style.display = 'block';
+        }
+
+        // Save settings
+        function saveSettings() {
+            monetizationData.settings = {
+                currency: document.getElementById('currency').value,
+                paymentMethod: document.getElementById('paymentMethod').value,
+                autoOptimize: document.getElementById('autoOptimize').checked,
+                mobileOptimize: document.getElementById('mobileOptimize').checked,
+                adBlockDetection: document.getElementById('adBlockDetection').checked
+            };
+            
+            saveMonetizationData();
+            showAlert('Settings saved successfully!', 'success', 'settingsAlert');
+        }
+
+        // Reset settings
+        function resetSettings() {
+            if (confirm('Are you sure you want to reset all settings to default?')) {
+                monetizationData = {
+                    adsense: {
+                        publisherId: '',
+                        adUnitId: '',
+                        adFormat: 'banner',
+                        enabled: true
+                    },
+                    placement: {
+                        headerAd: true,
+                        sidebarAd: true,
+                        contentAd: true,
+                        footerAd: false,
+                        popupAd: false,
+                        frequency: 'medium'
+                    },
+                    settings: {
+                        currency: 'USD',
+                        paymentMethod: 'adsense',
+                        autoOptimize: true,
+                        mobileOptimize: true,
+                        adBlockDetection: false
+                    },
+                    analytics: monetizationData.analytics
+                };
+                
+                saveMonetizationData();
+                populateFormFields();
+                showAlert('Settings reset to default!', 'success', 'settingsAlert');
+            }
+        }
+
+        // Refresh statistics
+        function refreshStats() {
+            // Simulate data refresh
+            monetizationData.analytics.totalRevenue += Math.random() * 10;
+            monetizationData.analytics.pageViews += Math.floor(Math.random() * 100);
+            monetizationData.analytics.totalClicks += Math.floor(Math.random() * 10);
+            monetizationData.analytics.ctr = (monetizationData.analytics.totalClicks / monetizationData.analytics.pageViews) * 100;
+            
+            updateStats();
+            saveMonetizationData();
+            showAlert('Statistics refreshed!', 'success', 'overviewAlert');
+        }
+
+        // Export revenue data
+        function exportRevenueData() {
+            const dataStr = JSON.stringify(monetizationData, null, 2);
+            const dataBlob = new Blob([dataStr], {type: 'application/json'});
+            const url = URL.createObjectURL(dataBlob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'revenue-data.json';
+            link.click();
+            URL.revokeObjectURL(url);
+            showAlert('Revenue data exported successfully!', 'success', 'overviewAlert');
+        }
+
+        // Generate report
+        function generateReport() {
+            showAlert('Report generation feature coming soon!', 'info', 'analyticsAlert');
+        }
+
+        // Sync analytics
+        function syncAnalytics() {
+            showAlert('Analytics sync feature coming soon!', 'info', 'analyticsAlert');
+        }
+
+        // Show alert message
+        function showAlert(message, type, alertId = 'overviewAlert') {
+            const alertDiv = document.getElementById(alertId);
+            alertDiv.innerHTML = '<div class="alert alert-' + type + '">' + message + '</div>';
+            
+            setTimeout(() => {
+                alertDiv.innerHTML = '';
+            }, 5000);
+        }
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, initializing monetization system...');
+            setupTabSwitching();
+            setupAdSenseForm();
+            loadMonetizationData();
+        });
+    </script>
+</body>
+</html> 
